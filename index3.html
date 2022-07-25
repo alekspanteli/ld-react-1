@@ -16,26 +16,36 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const Header = () => {
+      const Header = (props) => {
+        console.log(props);
         return (
           <header>
-            <h1>Header goes here</h1>
+            <h1>{props.name}`s header goes here</h1>
           </header>
         );
       };
-      const Main = () => {
+      const Main = (props) => {
         return (
           <section>
-            <p>Main content goes here</p>
+            <p>Main content for {props.food} goes here</p>
           </section>
+        );
+      };
+
+      const Footer = (props) => {
+        return (
+          <footer>
+            <p>copyright {props.year} Footer goes here</p>
+          </footer>
         );
       };
 
       const App = () => {
         return (
           <div>
-            <Header />
-            <Main />
+            <Header name="Alex" />
+            <Main food="Makaronia" />
+            <Footer year={new Date().getFullYear()} />
           </div>
         );
       };
