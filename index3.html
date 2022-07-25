@@ -55,11 +55,11 @@
 
       const App = () => {
         return (
-          <div>
+          <React.Fragment>
             <Header name="Alex" />
             <Main food="Makaronia" dishes={dishObjects} />
             <Footer year={new Date().getFullYear()} />
-          </div>
+          </React.Fragment>
         );
       };
 
