@@ -17,7 +17,6 @@
     <div id="root"></div>
     <script type="text/babel">
       const Header = (props) => {
-        console.log(props);
         return (
           <header>
             <h1>{props.name}`s header goes here</h1>
@@ -27,7 +26,13 @@
       const Main = (props) => {
         return (
           <section>
+            <img height={200} src="./img/cow-img.jpeg" alt="Image goes here" />
             <p>Main content for {props.food} goes here</p>
+            <ul>
+              {props.dishes.map((dish, i) => (
+                <li key={dish.id}>{dish.title}</li>
+              ))}
+            </ul>
           </section>
         );
       };
@@ -40,11 +45,19 @@
         );
       };
 
+      const dishes = ["Item 1", "Item 2", "Item 3"];
+      const cars = ["Car 1", "Car 2", "Car 3"];
+
+      const dishObjects = dishes.map((dish, i) => ({
+        id: i,
+        title: dish,
+      }));
+
       const App = () => {
         return (
           <div>
             <Header name="Alex" />
-            <Main food="Makaronia" />
+            <Main food="Makaronia" dishes={dishObjects} />
             <Footer year={new Date().getFullYear()} />
           </div>
         );
